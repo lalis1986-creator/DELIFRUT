@@ -1,0 +1,486 @@
+﻿
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeliFrut | Cruje, sorbe y sonríe</title>
+    <style>
+        /* Estilos Generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fcf8f2;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #d93856;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Barra de Navegación */
+        header {
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d93856;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff914d;
+        }
+
+        /* Sección Hero (Inicio) */
+        #inicio {
+            background: linear-gradient(135deg, #ff914d 0%, #d93856 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        #inicio h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        #inicio p {
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        /* Contenedor de Secciones */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        /* Desarrollo y Recetas */
+        .flex-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 300px;
+            background: #fff9f5;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #ff914d;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #ff914d;
+            text-align: left;
+            border-bottom: 2px solid #ffe6d5;
+            padding-bottom: 8px;
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Beneficios */
+        .beneficios {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .beneficios h4 {
+            color: #2e7d32;
+            margin-bottom: 5px;
+        }
+
+        /* Tablas de Precios e Investigación */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #d93856;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #fff5f6;
+        }
+
+        /* Galería */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .media-box {
+            background: #fff;
+            border: 8px solid #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .media-box:hover {
+            transform: scale(1.03);
+        }
+
+        .media-box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .media-box video {
+            width: 100%;
+            height: 200px;
+            background: #000;
+            display: block;
+        }
+
+        .media-caption {
+            padding: 10px;
+            font-size: 0.9rem;
+            color: #666;
+            background: #fafafa;
+            font-weight: bold;
+        }
+
+        /* Formulario de Contacto */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #d93856;
+            outline: none;
+        }
+
+        button {
+            background: #d93856;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #b82640;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        /* Ajustes Responsivos */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            #inicio h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Navegación -->
+    <header>
+        <nav>
+            <a href="#inicio" class="logo">DeliFrut</a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#desarrollo">Desarrollo</a></li>
+                <li><a href="#investigacion">Investigación</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Inicio (Hero) -->
+    <section id="inicio" style="margin:0; border-radius:0; padding: 120px 20px;">
+        <h1>DeliFrut</h1>
+        <p>Cruje, sorbe y sonríe</p>
+    </section>
+
+    <div class="container">
+
+        <!-- Sección Desarrollo -->
+        <section id="desarrollo">
+            <h2>Desarrollo del Producto</h2>
+            <p style="text-align: center; color: #666;">Conoce los ingredientes naturales y el proceso artesanal detrás de nuestras delicias.</p>
+            
+            <div class="flex-container">
+                <!-- Tarjeta Waffle -->
+                <div class="card">
+                    <h3>🧇 Waffle Saludable</h3>
+                    <p><strong>Materiales / Ingredientes:</strong></p>
+                    <ul>
+                        <li>2 plátanos</li>
+                        <li>50 gramos de avena</li>
+                        <li>2 huevos</li>
+                        <li>1 taza de almendras</li>
+                    </ul>
+                    <p><strong>Proceso de Elaboración:</strong></p>
+                    <ol>
+                        <li>Agregar a la licuadora los plátanos, la avena, los huevos y la taza de almendras.</li>
+                        <li>Licuar por 1 minuto hasta obtener una mezcla espesa.</li>
+                        <li>Dejar reposar la masa durante 2 minutos.</li>
+                        <li>Precalentar la wafflera y engrasar ligeramente.</li>
+                        <li>Vaciar 1/3 de la mezcla en la wafflera y cocinar de 4 a 5 minutos.</li>
+                        <li>Sacar con cuidado y servir en un recipiente decorado al gusto.</li>
+                    </ol>
+                    <div class="beneficios">
+                        <h4>🌱 Beneficios para la salud:</h4>
+                        <ul>
+                            <li>Contienen fibra natural.</li>
+                            <li>Ayudan significativamente a la digestión.</li>
+                            <li>Brindan energía sostenida para tu día.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Frappé -->
+                <div class="card">
+                    <h3>🥤 Frappé de Frutos Rojos</h3>
+                    <p><strong>Materiales / Ingredientes:</strong></p>
+                    <ul>
+                        <li>1/4 de taza de leche de almendras</li>
+                        <li>Mix de frutos rojos congelados</li>
+                        <li>Endulzante natural a base de sucralosa</li>
+                        <li>4 a 5 hielos</li>
+                    </ul>
+                    <p><strong>Proceso de Elaboración:</strong></p>
+                    <ol>
+                        <li>Colocar el 1/4 de taza de leche de almendras en la licuadora.</li>
+                        <li>Agregar el mix de frutos rojos congelados al gusto.</li>
+                        <li>Añadir el endulzante natural a base de sucralosa.</li>
+                        <li>Poner a licuar de 4 a 5 hielos en el vaso de la licuadora.</li>
+                        <li>Licuar durante 1 minuto hasta obtener una consistencia cremosa y homogénea.</li>
+                        <li>¡Sirve, sorbe y disfruta!</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Investigación y Costos -->
+        <section id="investigacion">
+            <h2>Investigación y Costos</h2>
+            
+            <h3>Costos de Ingredientes</h3>
+            <p>Análisis financiero estimado para la adquisición de materia prima de excelente calidad:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ingrediente / Material</th>
+                        <th>Cantidad Estándar</th>
+                        <th>Costo Estimado ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Plátanos y Avena</td>
+                        <td>Por lote</td>
+                        <td>$25.00</td>
+                    </tr>
+                    <tr>
+                        <td>Huevos y Almendras</td>
+                        <td>Por lote</td>
+                        <td>$45.00</td>
+                    </tr>
+                    <tr>
+                        <td>Mix de Frutos Rojos Congelados</td>
+                        <td>Bolsa / Porciones</td>
+                        <td>$60.00</td>
+                    </tr>
+                    <tr>
+                        <td>Leche de Almendras y Sucralosa</td>
+                        <td>1 Litro / Caja</td>
+                        <td>$40.00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br><br>
+            <h3>Precios de Venta al Público</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Tamaño / Porción</th>
+                        <th>Precio de Venta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🧇 Waffle Saludable de Plátano y Avena</td>
+                        <td>Pieza completa decorada</td>
+                        <td>$45.00</td>
+                    </tr>
+                    <tr>
+                        <td>🥤 Frappé Cremoso de Frutos Rojos</td>
+                        <td>Vaso mediano</td>
+                        <td>$35.00</td>
+                    </tr>
+                    <tr>
+                        <td>🎉 Combo DeliFrut (Waffle + Frappé)</td>
+                        <td>Menú Ejecutivo Escolar</td>
+                        <td>$75.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Sección Galería -->
+        <section id="galeria">
+            <h2>Galería Multimedios</h2>
+            <p style="text-align: center; color: #666;">Registros visuales de DeliFrut con marcos de presentación:</p>
+            
+            <div class="galeria-grid">
+                <!-- Fotos (Reemplaza 'src' con tus imágenes reales) -->
+                <div class="media-box">
+                    <img src="WF.jpg" alt="Waffle DeliFrut">
+                    <div class="media-caption">Foto 1: Presentación del Waffle</div>
+                </div>
+                <div class="media-box">
+                    <img src="FN.jpg" alt="Frappé DeliFrut">
+                    <div class="media-caption">Foto 2: Frappé Frutos Rojos</div>
+                </div>
+                <div class="media-box">
+                    <img src="Combo.jpeg" alt="Combo DeliFrut">
+                    <div class="media-caption">Foto 3: Nuestro Stand / Combo</div>
+                </div>
+
+                <!-- Videos (Reemplaza 'src' con tus archivos de video reales) -->
+                <div class="media-box">
+                    <video controls src="Introduccion.mp4"></video>
+                    <div class="media-caption">Video 1: Elaboración del Waffle</div>
+                </div>
+                <div class="media-box">
+                    <video controls src="Desarrollo.mp4"></video>
+                    <div class="media-caption">Video 2: Preparación del Frappé</div>
+                </div>
+                <div class="media-box">
+                    <video controls src="PYMES.mp4"></video>
+                    <div class="media-caption">Video 3: Experiencia de Clientes</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <iframe src="https://forms.gle/3Eu1xuVyXVz3UFFUA"
+             width="640" heigth="800" frameborder="0" marginheight="0">cargando...</iframe>
+           
+        </section>
+
+    </div>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2026 DeliFrut - Proyecto Académico Feria de Emprendimiento. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
